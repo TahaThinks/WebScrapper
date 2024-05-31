@@ -7,5 +7,8 @@ movies_webpage = response.text
 
 soup = BeautifulSoup(movies_webpage, "html.parser")
 movies_list = [movie.text for movie in soup.find_all(name="h3", class_="title")]
-print(movies_list[::-1])
+movies = movies_list[::-1]
 
+with open("movie.txt", mode='w', encoding="utf-8") as file:
+    for movie in movies:
+        file.write(f"{movie}\n")
