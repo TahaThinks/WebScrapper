@@ -7,15 +7,12 @@ yc_webpage = response.text
 
 soup = BeautifulSoup(yc_webpage, "html.parser")
 
-article_tag = soup.find(name="span", class_="titleline")
-print(article_tag.a.text)
-print(article_tag.a['href'])
 
-article_score = soup.find(name="span", class_="score")
-print(article_score.text.split()[0])
+articles_tags = soup.find_all(name="span", class_="titleline")
+for article_tag in articles_tags:
+    print(article_tag.a.text)
+    print(article_tag.a['href'])
 
-
-# article_links = soup.find_all(name='span', class_="titleline")
-
-# for article_link in article_links:
-#     print(article_link.a.text)
+articles_scores = soup.find_all(name="span", class_="score")
+for article_score in articles_scores:
+    print(article_score.text)
