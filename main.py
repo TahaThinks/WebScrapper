@@ -21,5 +21,11 @@ articles_upvotes = [int(score.text.split()[0]) for score in soup.find_all(name="
 # print(article_texts)
 # print(article_links)
 print(articles_upvotes)
-print(max(articles_upvotes))
-print(articles_upvotes.index(max(articles_upvotes)))
+highest_score = max(articles_upvotes)
+highest_score_index = articles_upvotes.index(max(articles_upvotes))
+print(article_texts[highest_score_index])
+print(article_links[highest_score_index])
+
+print(f"Removing the Value {highest_score} with index {highest_score_index}")
+articles_upvotes.pop(highest_score_index)
+print(articles_upvotes)
